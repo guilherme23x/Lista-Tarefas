@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: url(./img/background.png);
+  background-repeat: no-repeat;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.container {
+  background-color: #d1d1d1a2;
+  width: 50rem;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 10rem auto 0;
+  overflow-y: scroll;
+  height: 40rem;
+  box-shadow: rgba(0, 0, 0, 0.411) 0px 0.4rem 1rem;
+
+  .container_digitar_adicionar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .digitar {
+    border: none;
+    border-radius: 0.5rem;
+    width: 30rem;
+    height: 4rem;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .botao_adicionar {
+    border: none;
+    border-radius: 0.5rem;
+    height: 4rem;
+    background-color: #003329;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0 1.5rem;
+    transition: 1s;
+  }
+
+  .botao_adicionar:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.411) 0px 0.4rem 1rem;
+    transform: translateY(-3px);
+  }
+
+  .lista_tarefas {
+    width: 100%;
+    list-style: none;
+    margin-top: 2rem;
+  }
+
+  .tarefa {
+    background-color: #f2f2f2;
+    box-shadow: rgba(0, 0, 0, 0.151) 0px 0.4rem 1rem;
+    border-radius: 0.6rem;
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .done {
+    background-color: #2c8675;
+    text-decoration: line-through;
+  }
+
+  img {
+    height: 2.5rem;
+    border-radius: 50%;
+    opacity: 0;
+    transition: 1s;
+  }
+
+  li:hover img {
+    opacity: 1;
+    cursor: pointer;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.411) 0px 0.4rem 1rem;
+    transform: translateY(-3px);
+  }
+}
