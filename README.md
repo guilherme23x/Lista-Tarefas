@@ -1,1 +1,1 @@
-![image](https://github.com/guilherme23x/Lista-Tarefas/assets/150593535/ba28d9b7-77fa-4f19-bd35-1de8d7c6fa39)
+![Tarefas](https://github.com/user-attachments/assets/62696315-5794-43ad-a119-8d77e2f7713e)
