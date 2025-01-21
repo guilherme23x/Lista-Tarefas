@@ -2,13 +2,19 @@ const botao = document.querySelector(".botao_adicionar");
 const input = document.querySelector(".digitar");
 const listaCompleta = document.querySelector(".lista_tarefas");
 const modal = document.getElementById("modal");
+const modalEditar = document.getElementById("modal-editar");
 const botaoFecharModal = document.getElementById("fecharModal");
+
+const botaoFecharModalEditar = document.getElementById("fecharModalEditar");
+const botaoSalvarEditar = document.getElementById("salvar-editar");
+const inputEditar = document.getElementById("input-editar");
 let minhaLista = [];
+let tarefaEditandoPosicao = null;
 
 function adicionarNovaTarefa() {
   if (input.value.trim() === "") {
-    mostrarModal(); // Mostra o modal se o campo estiver vazio
-    return; // Interrompe a execução da função
+    mostrarModal();
+    return;
   }
 
   minhaLista.push({
@@ -45,10 +51,13 @@ function mostrarTarefas() {
       novaLi +
       `
     <li class="tarefa ${item.concluida && "done"}">
-    
+    <p class="tarefaCaixa">${item.tarefa}</p>
+
+    <div class="botoesAcoes">
         <img  src="./img/checked.png" alt="check-tarefa" onclick="concluirTarefa(${posicao})"/>
-        <p>${item.tarefa}</p>
+        <img  src="./img/edit.png" alt="Editar" onclick="editarTarefa(${posicao})"/>
         <img  src="./img/trash.png" alt="Lixeira" onclick="deletar(${posicao})" />
+        </div>
     </li>`;
   });
 
@@ -58,11 +67,43 @@ function mostrarTarefas() {
 }
 
 function mostrarModal() {
-  modal.style.display = "flex"; // Exibe o modal
+  modal.style.display = "flex";
 }
 
+function mostrarModalEditar() {
+  modalEditar.style.display = "flex";
+  inputEditar.value = minhaLista[tarefaEditandoPosicao].tarefa;
+}
+
+function fecharModalEditar() {
+  modalEditar.style.display = "none";
+  tarefaEditandoPosicao = null;
+}
+
+function editarTarefa(posicao) {
+  tarefaEditandoPosicao = posicao;
+  mostrarModalEditar();
+}
+
+botaoSalvarEditar.addEventListener("click", function () {
+  const novaTarefa = inputEditar.value.trim();
+
+  if (novaTarefa === "") {
+    alert("A tarefa não pode ser vazia!");
+    return;
+  }
+
+  minhaLista[tarefaEditandoPosicao].tarefa = novaTarefa;
+  mostrarTarefas();
+  fecharModalEditar();
+});
+
 botaoFecharModal.addEventListener("click", function () {
-  modal.style.display = "none"; // Fecha o modal
+  modal.style.display = "none";
+});
+
+botaoFecharModalEditar.addEventListener("click", function () {
+  fecharModalEditar();
 });
 
 recarregarTarefas();
